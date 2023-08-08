@@ -42,7 +42,7 @@ let dbUri = '';
 if(NODE_ENV === 'production') {
   dbUri = 'url to remote db';
 } else {
-  dbUri = 'mongodb://localhost:27017/adsDB';
+  dbUri = 'mongodb://localhost:27017/adBoardDB';
 }
 
 mongoose.connect(dbUri, {useNewUrlParser: true, useUnifiedTopology: true});
