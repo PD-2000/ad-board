@@ -16,6 +16,8 @@ const connectToDB = () => {
     console.log('Connected to the database');
   });
   db.on('error', (err) => console.log('Error ' + err));
+
+  return db;
 };
 
 module.exports = connectToDB;
