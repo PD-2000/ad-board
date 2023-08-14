@@ -15,6 +15,7 @@ export const removeAd = payload => ({type: REMOVE_AD, payload});
 export const addAd = payload => ({type: ADD_AD, payload});
 export const editAd = payload => ({type: EDIT_AD, payload});
 
+// reducer
 const adsReducer = (statePart = [], action) => {
   switch(action.type) {
     case REMOVE_AD:
