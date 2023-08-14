@@ -1,5 +1,5 @@
 // selectors
-
+export const getAllUsers = ({users}) => users;
 
 // actions
 const createActionName = (actionName) => `app/users/${actionName}`;
@@ -12,11 +12,12 @@ export const logIn = payload => ({
   payload
 });
 export const logOut = payload => ({
-  type: LOG_OUT
+  type: LOG_OUT,
+  payload
 });
 
 // reducer
-const adsReducer = (statePart = null, action) => {
+const usersReducer = (statePart = null, action) => {
   switch(action.type) {
     case LOG_IN:
       return action.payload;
@@ -27,4 +28,4 @@ const adsReducer = (statePart = null, action) => {
   }
 }
 
-export default adsReducer;
+export default usersReducer;

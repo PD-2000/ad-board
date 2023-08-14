@@ -3,7 +3,7 @@ import {Routes, Route} from 'react-router-dom';
 import Header from './components/views/Header/Header';
 import Footer from './components/views/Footer/Footer';
 import Home from './components/pages/Home/Home';
-import Ad from './components/pages/Ad/Ad';
+import AdSingle from './components/features/AdSingle/AdSingle';
 import AdAdd from './components/pages/AdAdd/AdAdd';
 import AdEdit from './components/pages/AdEdit/AdEdit';
 import AdRemove from './components/pages/AdRemove/AdRemove';
@@ -20,7 +20,7 @@ const App = () => {
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/ad/:id" element={<Ad />} />
+          <Route path="/ad/:id" element={<AdSingle />} />
           <Route path="/ad/add" element={<AdAdd />} />
           <Route path="/ad/edit/:id" element={<AdEdit />} />
           <Route path="/ad/remove/:id" element={<AdRemove />} />

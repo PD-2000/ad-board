@@ -1,7 +1,10 @@
+import AdFormEdit from "../../features/AdFormEdit/AdFormEdit";
+
 const AdEdit = () => {
   return (
     <div>
-      <h1>AdEdit</h1>
+      <h1 className="text-center">Edit advertisement</h1>
+      <AdFormEdit />
     </div>
   );
 }
