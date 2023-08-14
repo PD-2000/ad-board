@@ -16,7 +16,8 @@ const initialState = {
 			location: 'TN',
 			user: 'John Doe'
 		}
-	]
+	],
+	user: null
 };
   
 export default initialState;

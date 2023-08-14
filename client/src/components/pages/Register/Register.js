@@ -21,8 +21,8 @@ const Register = () => {
     const options = {
       method: 'POST',
       body: fd
-    };
-    
+    }
+
     setStatus('loading');
     fetch(`${API_URL}/auth/register`, options)
       .then(res => {
@@ -91,7 +91,7 @@ const Register = () => {
         <Form.Label>Avatar</Form.Label>
         <Form.Control type="file" onChange={e => setAvatar(e.target.files[0])} />
       </Form.Group>
-      <Button variant="primary" type="submit">Submit</Button>
+      <Button variant="primary" type="submit">Register</Button>
     </Form>
   );
 }
