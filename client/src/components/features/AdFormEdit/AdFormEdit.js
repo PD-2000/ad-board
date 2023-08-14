@@ -27,6 +27,7 @@ const AdFormEdit = () => {
         author={adData.author}
         location={adData.location}
         publishedDate={adData.publishedDate}
+        image={adData.image}
         shortDescription={adData.shortDescription}
         content={adData.content}
       />

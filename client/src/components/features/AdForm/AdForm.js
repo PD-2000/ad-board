@@ -13,6 +13,7 @@ const AdForm = ({action, actionText, ...props}) => {
   const [author, setAuthor] = useState(props.author || '');
   const [location, setLocation] = useState(props.location || '');
   const [publishedDate, setPublishedDate] = useState(new Date());
+  const [image, setImage] = useState(props.image || null);
   const [shortDescription, setShortDescription] = useState(props.shortDescription || '');
   const [content, setContent] = useState(props.content || '');
   const [dateError, setDateError] = useState(false);
@@ -53,6 +54,11 @@ const AdForm = ({action, actionText, ...props}) => {
           <Form.Label>Publishment date</Form.Label>
           <DatePicker selected={publishedDate} onChange={(date) => setPublishedDate(date)} />
           {dateError && <small className="d-block form-text text-danger mt-2">You must choose when to publish this advertisement.</small>}
+        </Form.Group>
+        <Form.Group className="mb-4">
+          <Form.Label>Image</Form.Label>
+          <Form.Control {...register("image", {required: true, minLength: 10})} type="file" value={image} onChange={e => setImage(e.target.value)} />
+          {errors.image && <small className="d-block text-danger mt-1">You must attach an image.</small>}
         </Form.Group>
         <Form.Group className="mb-4">
           <Form.Label>Short description</Form.Label>
