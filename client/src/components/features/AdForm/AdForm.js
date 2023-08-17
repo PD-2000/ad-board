@@ -28,7 +28,7 @@ const AdForm = ({action, actionText, ...props}) => {
   };
 
   return (
-    <div style={{width: '70%'}} className="m-auto" >
+    <div style={{width: '70%'}} className="m-auto">
       <Form onSubmit={validate(handleSubmit)}>
         <Form.Group className="mb-4">
           <Form.Label>Title</Form.Label>

@@ -34,7 +34,7 @@ const AdSingle = () => {
       <p><b>Price: </b>{adData.price}</p>
       <p><b>Author: </b>{adData.author}</p>
       <p><b>Location: </b>{adData.location}</p>
-      {/* <p><b>Published: </b>{adData.publishedDate}</p> */}
+      <p><b>Published: </b>{adData.publishedDate.toISOString().substring(0, 10)}</p>
       <p>{adData.image}</p>
       <p><b>Content: </b>{adData.content}</p>
 
