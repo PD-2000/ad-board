@@ -20,8 +20,8 @@ const AdForm = ({action, actionText, ...props}) => {
   const [contentError, setContentError] = useState(false);
 
   const handleSubmit = () => {
-    setContentError(!content)
-    setDateError(!publishedDate)
+    setContentError(!content);
+    setDateError(!publishedDate);
     if(content && publishedDate) {
       action({title, price, author, location, publishedDate, shortDescription, content});
     }
@@ -32,12 +32,12 @@ const AdForm = ({action, actionText, ...props}) => {
       <Form onSubmit={validate(handleSubmit)}>
         <Form.Group className="mb-4">
           <Form.Label>Title</Form.Label>
-          <Form.Control{...register("title", {required: true, minLength: 1})} value={title} onChange={e => setTitle(e.target.value)} />
+          <Form.Control {...register("title", {required: true, minLength: 1})} value={title} onChange={e => setTitle(e.target.value)} />
           {errors.title && <small className="d-block text-danger mt-1">You must give this advertisement a title.</small>}
         </Form.Group>
         <Form.Group className="mb-4">
           <Form.Label>Price</Form.Label>
-          <Form.Control{...register("price", {required: true, minLength: 1})} value={price} onChange={e => setPrice(e.target.value)} />
+          <Form.Control {...register("price", {required: true, minLength: 1})} value={price} onChange={e => setPrice(e.target.value)} />
           {errors.price && <small className="d-block text-danger mt-1">You must set the price.</small>}
         </Form.Group>
         <Form.Group className="mb-4">

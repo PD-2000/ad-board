@@ -16,8 +16,8 @@ exports.register = async (req, res) => {
         fs.unlinkSync(`./public/uploads/${req.file.filename}`);
         return res.status(409).send({message: 'User with this login already exists'});
       }
-      const user = new User.create({login, password: await bcrypt.hash(password, 10), phoneNumber, avatar: req.file.filename});
-      res.status(201).send({message: 'User created: ' + user.login})
+      const user = User.create({login, password: await bcrypt.hash(password, 10), phoneNumber, avatar: req.file.filename});
+      res.status(200).send({message: 'User created: ' + user.login})
     } else {
 			res.status(400).send({message: 'Invalid request'});
 		}
@@ -30,6 +30,7 @@ exports.login = async (req, res) => {
   try {
     const {login, password} = req.body;
     if(login && typeof login === 'string' && password && typeof password === 'string') {
+      const user = User.create({login, password: await bcrypt.hash(password, 10), phoneNumber, avatar: req.file.filename});
       if(!user) {
         res.status(400).send({message: 'Incorrect login or password'});
       } else {
@@ -43,13 +44,14 @@ exports.login = async (req, res) => {
     } else {
       res.status(400).send({message: 'Invalid request'});
     }
-  } catch {
+  } catch(err) {
     res.status(500).send({message: err.message});
   }
 }
 
 exports.getUser = async (req, res) => {
   res.send('User logged in');
+  res.json({login: req.session.login});
 }
 
 exports.logout = async (req, res) => {

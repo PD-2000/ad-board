@@ -24,7 +24,7 @@ const Login = () => {
     setStatus('loading');
     fetch(`${API_URL}/auth/login`, options)
       .then(res => {
-        if(res.status === 201){
+        if(res.status === 200) {
           setStatus('success');
           dispatch(logIn({login}));
         } else if(res.status === 400) {

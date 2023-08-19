@@ -7,7 +7,7 @@ const Ads = () => {
   const ads = useSelector(getAllAds);
 
 	return (
-    <Row className="justify-content-between">
+    <Row className="justify-content">
       {ads.map(ad => <Ad key={ad.id} {...ad} />)}
     </Row>
 	);

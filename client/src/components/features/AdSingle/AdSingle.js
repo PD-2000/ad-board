@@ -36,7 +36,7 @@ const AdSingle = () => {
       <p><b>Location: </b>{adData.location}</p>
       <p><b>Published: </b>{adData.publishedDate.toISOString().substring(0, 10)}</p>
       <p>{adData.image}</p>
-      <p><b>Content: </b>{adData.content}</p>
+      <p><b>Description: </b><span dangerouslySetInnerHTML={{__html: adData.content}}/></p>
 
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
