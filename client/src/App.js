@@ -1,5 +1,7 @@
 import {Container} from 'react-bootstrap';
 import {Routes, Route} from 'react-router-dom';
+import {useSelector, useDispatch} from 'react-redux';
+import {useEffect} from 'react';
 import Header from './components/views/Header/Header';
 import Footer from './components/views/Footer/Footer';
 import Home from './components/pages/Home/Home';
@@ -12,11 +14,27 @@ import Login from './components/pages/Login/Login';
 import Register from './components/pages/Register/Register';
 import Logout from './components/pages/Logout/Logout';
 import NotFound from './components/pages/NotFound/NotFound';
+import {logIn} from './redux/usersRedux';
+import {API_URL} from './config';
 
 const App = () => {
+  const dispatch = useDispatch();
+  // const user = useSelector(state => state.user);
+
+  useEffect(() => {
+    fetch(`${API_URL}/auth/user`)
+      .then(res => res.json())
+      .then(res => {
+        if(res.status === 200) {
+          dispatch(logIn({login: res.login}));
+        }
+      })
+  }, [dispatch]);
+
   return (
     <main>
       <Container>
+        {/* <pre>{JSON.stringify(user)}</pre> */}
         <Header />
         <Routes>
           <Route path="/" element={<Home />} />

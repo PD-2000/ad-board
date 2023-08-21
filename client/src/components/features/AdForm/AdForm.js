@@ -70,9 +70,7 @@ const AdForm = ({action, actionText, ...props}) => {
           <ReactQuill as="textarea" value={content} onChange={setContent} />
           {contentError && <small className="d-block form-text text-danger mt-1">You must include more details regarding this advertisement.</small>}
         </Form.Group>
-        <Button variant="success" type="submit">
-          {actionText}
-        </Button>
+        <Button variant="success" type="submit">{actionText}</Button>
       </Form>
     </div>
   );

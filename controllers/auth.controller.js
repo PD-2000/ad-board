@@ -17,7 +17,7 @@ exports.register = async (req, res) => {
         return res.status(409).send({message: 'User with this login already exists'});
       }
       const user = User.create({login, password: await bcrypt.hash(password, 10), phoneNumber, avatar: req.file.filename});
-      res.status(200).send({message: 'User created: ' + user.login})
+      res.status(200).send({message: 'User created: ' + login});
     } else {
 			res.status(400).send({message: 'Invalid request'});
 		}
@@ -30,7 +30,7 @@ exports.login = async (req, res) => {
   try {
     const {login, password} = req.body;
     if(login && typeof login === 'string' && password && typeof password === 'string') {
-      const user = User.create({login, password: await bcrypt.hash(password, 10), phoneNumber, avatar: req.file.filename});
+      const user = await User.findOne({login});
       if(!user) {
         res.status(400).send({message: 'Incorrect login or password'});
       } else {
@@ -50,7 +50,6 @@ exports.login = async (req, res) => {
 }
 
 exports.getUser = async (req, res) => {
-  res.send('User logged in');
   res.json({login: req.session.login});
 }
 

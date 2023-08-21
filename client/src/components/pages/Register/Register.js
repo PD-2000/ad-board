@@ -2,6 +2,7 @@ import {Alert, Button, Form, Spinner} from 'react-bootstrap';
 import {useState} from 'react';
 import {API_URL} from '../../../config';
 import {useForm} from 'react-hook-form';
+import {useNavigate} from 'react-router-dom';
 
 const Register = () => {
   const {register, handleSubmit: validate, formState: {errors}} = useForm();
@@ -10,10 +11,9 @@ const Register = () => {
   const [phoneNumber, setPhoneNumber] = useState('');
   const [avatar, setAvatar] = useState(null);
   const [status, setStatus] = useState(null); // null, 'loading', 'success', 'serverError', 'clientError', 'loginError'
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
-    // e.preventDefault();
-
     const fd = new FormData();
     fd.append('login', login);
     fd.append('password', password);
@@ -30,6 +30,7 @@ const Register = () => {
       .then(res => {
         if(res.status === 200) {
           setStatus('success');
+          setTimeout(() => navigate('/'), 1000);
         } else if(res.status === 400) {
           setStatus('clientError');
         } else if(res.status === 409) {

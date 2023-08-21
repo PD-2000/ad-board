@@ -1,4 +1,5 @@
 import {Alert, Button, Form, Spinner} from 'react-bootstrap';
+import {useNavigate} from 'react-router-dom';
 import {useState} from 'react';
 import {useDispatch} from 'react-redux';
 import {API_URL} from '../../../config';
@@ -8,6 +9,7 @@ const Login = () => {
   const [login, setLogin] = useState('');
   const [password, setPassword] = useState('');
   const [status, setStatus] = useState(null); // null, 'loading', 'success', 'serverError', 'clientError'
+  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const handleSubmit = e => {
@@ -27,6 +29,7 @@ const Login = () => {
         if(res.status === 200) {
           setStatus('success');
           dispatch(logIn({login}));
+          setTimeout(() => navigate('/'), 1000);
         } else if(res.status === 400) {
           setStatus('clientError');
         } else {
