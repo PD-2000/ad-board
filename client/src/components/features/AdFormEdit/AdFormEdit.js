@@ -1,6 +1,7 @@
 import {useDispatch, useSelector} from 'react-redux';
 import {editAd, getAdById} from '../../../redux/adsRedux';
-import {Navigate, useNavigate, useParams} from 'react-router-dom';
+import {Navigate, useParams} from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import AdForm from '../AdForm/AdForm';
 
 const AdFormEdit = () => {
@@ -10,8 +11,8 @@ const AdFormEdit = () => {
   const navigate = useNavigate();
 
   const handleEdit = ad => {
-    navigate("/");
     dispatch(editAd({...ad, id}));
+    navigate("/");
   }; 
 
   if(!adData) {

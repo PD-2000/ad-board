@@ -5,6 +5,8 @@ import 'react-quill/dist/quill.snow.css';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import {useForm} from 'react-hook-form';
+import {useNavigate} from 'react-router-dom';
+import {API_URL} from '../../../config';
 
 const AdForm = ({action, actionText, ...props}) => {
   const {register, handleSubmit: validate, formState: {errors}} = useForm();
@@ -18,13 +20,38 @@ const AdForm = ({action, actionText, ...props}) => {
   const [content, setContent] = useState(props.content || '');
   const [dateError, setDateError] = useState(false);
   const [contentError, setContentError] = useState(false);
+  const navigate = useNavigate();
 
   const handleSubmit = () => {
+    const fd = new FormData();
+    fd.append('title', title);
+    fd.append('price', price);
+    fd.append('author', author);
+    fd.append('location', location);
+    fd.append('publishedDate', publishedDate);
+    fd.append('image', image);
+    fd.append('shortDescription', shortDescription);
+    fd.append('content', content);
+
+    const options = {
+      method: 'POST',
+      body: fd
+    }
+
     setContentError(!content);
     setDateError(!publishedDate);
-    if(content && publishedDate) {
+    if(title && price && author && location && publishedDate && shortDescription && content) {
       action({title, price, author, location, publishedDate, shortDescription, content});
     }
+
+    fetch(`${API_URL}/api/ads`, options)
+      .then(res => {
+        if(res.status === 200) {
+          setTimeout(() => {
+            navigate('/');
+          }, 3000);
+        }
+      })
   };
 
   return (
@@ -62,8 +89,8 @@ const AdForm = ({action, actionText, ...props}) => {
         </Form.Group>
         <Form.Group className="mb-4">
           <Form.Label>Short description</Form.Label>
-          <Form.Control {...register("shortDescription", {required: true, minLength: 10})} as="textarea" value={shortDescription} onChange={e => setShortDescription(e.target.value)} />
-          {errors.shortDescription && <small className="d-block text-danger mt-1">You must give this advertisement a brief descritpion. A minimum of 10 characters is required.</small>}
+          <Form.Control {...register("shortDescription", {required: true, minLength: 10, maxLength: 80})} as="textarea" value={shortDescription} onChange={e => setShortDescription(e.target.value)} />
+          {errors.shortDescription && <small className="d-block text-danger mt-1">You must give this advertisement a brief descritpion. A minimum of 10 characters is required. Can't exceed 80 characters.</small>}
         </Form.Group>
         <Form.Group className="mb-4">
           <Form.Label>Ad's content</Form.Label>

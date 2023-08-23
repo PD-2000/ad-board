@@ -7,14 +7,8 @@ const LOG_IN = createActionName('LOG_IN');
 const LOG_OUT = createActionName('LOG_OUT');
 
 // action creators
-export const logIn = payload => ({
-  type: LOG_IN,
-  payload
-});
-export const logOut = payload => ({
-  type: LOG_OUT,
-  payload
-});
+export const logIn = payload => ({type: LOG_IN, payload});
+export const logOut = payload => ({type: LOG_OUT, payload});
 
 // reducer
 const usersReducer = (statePart = null, action) => {
