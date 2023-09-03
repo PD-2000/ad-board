@@ -11,12 +11,12 @@ const Ad = ({title, price, location, publishedDate, shortDescription, image, id}
           <Card.Text>
             <p><b>{price}</b></p>
             <p><i>{location}</i></p>
-            {/* <p><i>{publishedDate}</i></p> */}
+            <p><i>{publishedDate}</i></p>
             <p>{shortDescription}</p>
           </Card.Text>
           <Link key={id} to={"/ad/" + id}>
             <Button variant="success">Read more</Button>
-          </Link> 
+          </Link>
         </Card.Body>
         <Card.Img variant="top" src={IMAGES_URL + image} />
       </Card>

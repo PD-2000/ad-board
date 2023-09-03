@@ -6,7 +6,12 @@ import {useState} from 'react';
 
 const AdSingle = () => {
   const {id} = useParams();
-  const adData = useSelector(state => getAdById(state, id));
+  const adData = useSelector(state => {
+    console.log(state);
+    console.log(id);
+
+    getAdById(state, id)
+  });
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -18,6 +23,7 @@ const AdSingle = () => {
   };
 
   if(!adData){
+    console.log(adData);
     return <Navigate to="/" />
   }
   return (

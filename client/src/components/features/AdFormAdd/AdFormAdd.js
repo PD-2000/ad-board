@@ -12,7 +12,10 @@ const AdFormAdd = () => {
     const fd = AdForm.fd;
     const options = {
       method: 'POST',
-      body: fd
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({fd})
     }
 
     fetch(`${API_URL}/api/ads`, options)
