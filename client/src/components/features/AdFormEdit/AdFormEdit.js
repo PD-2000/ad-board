@@ -27,7 +27,7 @@ const AdFormEdit = () => {
         price={adData.price}
         author={adData.author}
         location={adData.location}
-        publishedDate={adData.publishedDate}
+        publishmentDate={adData.publishmentDate.toISOString().substring(0, 10)}
         image={adData.image}
         shortDescription={adData.shortDescription}
         content={adData.content}

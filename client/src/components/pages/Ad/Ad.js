@@ -2,7 +2,7 @@ import {Button,  Card, Col} from 'react-bootstrap';
 import {Link} from 'react-router-dom';
 import {IMAGES_URL} from '../../../config';
 
-const Ad = ({title, price, location, publishedDate, shortDescription, image, id}) => {
+const Ad = ({title, price, location, publishmentDate, shortDescription, image, id}) => {
   return (
     <Col className="py-4 col-12 col-sm-6 col-lg-4">
       <Card>
@@ -11,7 +11,7 @@ const Ad = ({title, price, location, publishedDate, shortDescription, image, id}
           <Card.Text>
             <p><b>{price}</b></p>
             <p><i>{location}</i></p>
-            <p><i>{publishedDate}</i></p>
+            <p><i>{publishmentDate}</i></p>
             <p>{shortDescription}</p>
           </Card.Text>
           <Link key={id} to={"/ad/" + id}>

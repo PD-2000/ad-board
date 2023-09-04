@@ -41,7 +41,8 @@ const AdForm = ({action, actionText, ...props}) => {
     setContentError(!content);
     setDateError(!publishedDate);
     if(title && price && author && location && publishedDate && shortDescription && content) {
-      action({title, price, author, location, publishedDate, shortDescription, content});
+      const publishmentDate = publishedDate.toISOString().substring(0, 10);
+      action({title, price, author, location, publishmentDate, shortDescription, content});
     }
 
     fetch(`${API_URL}/api/ads`, options)
@@ -84,7 +85,7 @@ const AdForm = ({action, actionText, ...props}) => {
         </Form.Group>
         <Form.Group className="mb-4">
           <Form.Label>Image</Form.Label>
-          <Form.Control {...register("image", {required: true, minLength: 10})} type="file" value={image} onChange={e => setImage(e.target.value)} />
+          <Form.Control {...register("image", {required: false})} type="file" value={image} onChange={e => setImage(e.target.value)} />
           {errors.image && <small className="d-block text-danger mt-1">You must attach an image.</small>}
         </Form.Group>
         <Form.Group className="mb-4">

@@ -4,9 +4,10 @@ const initialState = {
 			title: 'qweertytydfdgsdfgdfsvsdfvsdfv',
 			price: 'qweertytydfdgsdfgdfsvsdfvsdfv',
 			location: 'qweertytydfdgsdfgdfsvsdfvsdfv',
-			publishedDate: '09/03/2023',
+			publishmentDate: '2023-09-05',
 			shortDescription: 'qweertytydfdgsdfgdfsvsdfvsdfv',
-			id: 1
+			content: 'qweertytydfdgsdfgdfsvsdfvsdfv',
+			id: 'asdf'
 		}
 	],
 	user: null

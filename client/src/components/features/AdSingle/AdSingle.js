@@ -6,12 +6,7 @@ import {useState} from 'react';
 
 const AdSingle = () => {
   const {id} = useParams();
-  const adData = useSelector(state => {
-    console.log(state);
-    console.log(id);
-
-    getAdById(state, id)
-  });
+  const adData = useSelector(state => getAdById(state, id));
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -23,7 +18,6 @@ const AdSingle = () => {
   };
 
   if(!adData){
-    console.log(adData);
     return <Navigate to="/" />
   }
   return (
@@ -40,7 +34,7 @@ const AdSingle = () => {
       <p><b>Price: </b>{adData.price}</p>
       <p><b>Author: </b>{adData.author}</p>
       <p><b>Location: </b>{adData.location}</p>
-      <p><b>Published: </b>{adData.publishedDate.toISOString().substring(0, 10)}</p>
+      <p><b>Published: </b>{adData.publishmentDate}</p>
       <p>{adData.image}</p>
       <p><b>Description: </b><span dangerouslySetInnerHTML={{__html: adData.content}}/></p>
 
